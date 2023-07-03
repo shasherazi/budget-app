@@ -2,6 +2,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - "db/**/*"
+    - "lib/**/*"
     - "bin/*" 
     - "config/**/*"
     - "Guardfile"
