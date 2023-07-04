@@ -4,4 +4,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  devise_scope :user do
+    unauthenticated :user do
+      root to: 'devise/sessions#splash', as: :unauthenticated_root
+    end
+  end
 end
