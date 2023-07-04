@@ -13,6 +13,14 @@
     </div>
 
     <div class="field w-full px-2">
+      <%= f.text_field :name,
+                   autofocus: true,
+                   autocomplete: "name",
+                   placeholder: "Name",
+                   class: "w-full" %>
+    </div>
+
+    <div class="field w-full px-2">
       <%= f.email_field :email,
                     autofocus: true,
                     autocomplete: "email",

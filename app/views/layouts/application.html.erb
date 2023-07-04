@@ -26,6 +26,10 @@
             bg-[#d9edf7]
             text-[#31708f]
             text-center
+            absolute
+            bottom-0
+            z-20
+            w-full
           "
         ><%= notice %></p>
       <% end %>
@@ -41,8 +45,31 @@
             bg-[#f2dede]
             text-[#a94442]
             text-center
+            absolute
+            bottom-0
+            z-20
+            w-full
           "
         ><%= alert %></p>
+      <% end %>
+
+      <% if flash[:error] %>
+        <p
+          class="
+            flash
+            error
+            p-2.5
+            my-2.5
+            rounded
+            bg-[#f2dede]
+            text-[#a94442]
+            text-center
+            absolute
+            bottom-0
+            z-20
+            w-full
+          "
+        ><%= flash[:error] %></p>
       <% end %>
     </main>
   </body>
