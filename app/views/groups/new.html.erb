@@ -14,9 +14,9 @@
     "
   >
     <h2 class="text-2xl text-gray-100">ADD NEW GROUP</h2>
-      <div class="actions absolute left-3">
-        <a href="/" class="text-white cursor-pointer">Back</a>
-      </div>
+    <div class="actions absolute left-3">
+      <a href="/" class="text-white cursor-pointer">Back</a>
+    </div>
   </div>
 
   <%= form_with(model: @group, html: { class: "flex flex-col w-full gap-2 px-2" }) do |form| %>
@@ -25,7 +25,9 @@
     </div>
 
     <div class="field file-upload w-full">
-      <%= form.file_field :icon, accept: "image/png, image/jpeg, image/jpg", class: "form-control w-full" %>
+      <%= form.file_field :icon,
+                      accept: "image/png, image/jpeg, image/jpg",
+                      class: "form-control w-full" %>
     </div>
 
     <div class="actions w-full bg-[#3778c2] text-white p-2 text-center">
