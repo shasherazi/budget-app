@@ -1,0 +1,8 @@
+<div class="groups flex flex-col justify-center items-center gap-2 bg-gray-300">
+  <div class="nav flex justify-center items-center bg-[#3778c2] py-2 w-full sticky z-10 top-0">
+    <h2 class="text-2xl text-gray-100">CATEGORIES</h2>
+  </div>
+  <div class="px-2 w-full flex flex-col gap-2">
+  <%= render partial: "group", collection: @groups, as: :group %> 
+  </div>
+</div>

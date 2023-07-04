@@ -20,7 +20,7 @@ namespace :db do
 
     5.times do
       Group.create!(
-        name: Faker::Company.name,
+        name: Faker::Commerce.department(max: 1),
         icon: Faker::Company.logo,
         author: user
       )
@@ -54,7 +54,7 @@ namespace :db do
 
       5.times do
         Group.create!(
-          name: Faker::Company.name,
+          name: Faker::Commerce.department(max: 1),
           icon: Faker::Company.logo,
           author: user
         )

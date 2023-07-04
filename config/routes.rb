@@ -8,5 +8,12 @@ Rails.application.routes.draw do
     unauthenticated :user do
       root to: 'devise/sessions#splash', as: :unauthenticated_root
     end
+
+    authenticated :user do
+      root to: 'groups#index', as: :authenticated_root
+    end
+  end
+
+  resources :groups do
   end
 end
