@@ -1,0 +1,25 @@
+<div class="splash flex flex-col justify-center items-center h-screen p-4">
+  <h1 class="splash-heading text-3xl font-bold mt-auto">
+    Budgget
+  </h1>
+
+  <div
+    class="
+      splash-buttons
+      flex
+      flex-col
+      justify-center
+      items-center
+      w-full
+      mt-auto
+    "
+  >
+    <%= link_to "LOG IN",
+    new_user_session_path,
+    class:
+      "bg-[#3778c2] text-white w-full text-center
+                                        py-3 mb-1" %>
+    <%= link_to "SIGN UP", new_user_registration_path, class: "text-gray-600" %>
+
+  </div>
+</div>

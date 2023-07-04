@@ -12,8 +12,38 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main>
       <%= yield %>
+
+      <% if notice %>
+        <p
+          class="
+            flash
+            notice
+            p-2.5
+            my-2.5
+            rounded
+            bg-[#d9edf7]
+            text-[#31708f]
+            text-center
+          "
+        ><%= notice %></p>
+      <% end %>
+
+      <% if alert %>
+        <p
+          class="
+            flash
+            alert
+            p-2.5
+            my-2.5
+            rounded
+            bg-[#f2dede]
+            text-[#a94442]
+            text-center
+          "
+        ><%= alert %></p>
+      <% end %>
     </main>
   </body>
 </html>

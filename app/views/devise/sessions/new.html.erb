@@ -1,0 +1,32 @@
+<div class="login flex flex-col justify-center items-center gap-2">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "flex flex-col w-full gap-2" }) do |f| %>
+
+    <div class="nav flex justify-center items-center bg-[#3778c2] py-2 mb-2 w-full">
+      <h2 class="text-2xl text-gray-100">LOGIN</h2>
+      <div class="actions absolute right-3">
+        <%= f.submit "Log in", class: "text-white cursor-pointer" %>
+      </div>
+      <div class="actions absolute left-3">
+        <a href="/" class="text-white cursor-pointer">Back</a>
+      </div>
+    </div>
+
+    <div class="field w-full px-2">
+      <%= f.email_field :email,
+                    autofocus: true,
+                    autocomplete: "email",
+                    placeholder: "Email",
+                    class: "w-full" %>
+    </div>
+
+    <div class="field w-full px-2">
+      <%= f.password_field :password,
+                       autocomplete: "current-password",
+                       placeholder: "Password",
+                       class: "w-full" %>
+    </div>
+
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>
