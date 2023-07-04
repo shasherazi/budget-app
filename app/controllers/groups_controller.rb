@@ -11,7 +11,15 @@ class GroupsController < ApplicationController
 
   def create
     group = Group.create(group_params)
-    redirect_to group_path(group)
+    group.author = current_user
+
+    if group.save
+      redirect_to group_path(group)
+      flash[:notice] = 'Group created successfully'
+    else
+      redirect_to new_group_path
+      flash[:alert] = group.errors.full_messages.join(', ')
+    end
   end
 
   def edit
