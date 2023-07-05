@@ -1,0 +1,23 @@
+<div
+  class="
+    transaction
+    flex
+    justify-between
+    items-center
+    gap-x-20
+    relative
+    w-full
+    bg-white
+    h-[120px]
+    p-2
+  "
+>
+  <div class="transaction-name text-xl">
+    <%= entity.name %>
+  </div>
+  <div class="transaction-amount">
+    <p class="entity-amount"><%= number_to_currency(entity.amount) %></p>
+    <p class="entity-created-time absolute right-2 bottom-2 text-xs"><%= entity.created_at.strftime("%B %e, %Y %l:%M %p") %>
+    </p>
+  </div>
+</div>

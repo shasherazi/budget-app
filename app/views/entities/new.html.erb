@@ -1,0 +1,45 @@
+<div class="new-group flex flex-col items-center gap-2 min-h-screen">
+  <div
+    class="
+      nav
+      flex
+      justify-center
+      items-center
+      bg-[#3778c2]
+      py-2
+      w-full
+      sticky
+      z-10
+      top-0
+    "
+  >
+    <h2 class="text-2xl text-gray-100">ADD NEW ENTITY</h2>
+    <div class="actions absolute left-3">
+      <%= link_to "Back", group_path(@group), class: "text-gray-100" %>
+    </div>
+  </div>
+
+  <%= form_with model: @entity, class: "flex flex-col gap-2 w-full px-2", url: group_entities_path(@group) do |form| %>
+    <div class="field w-full">
+      <%= form.text_field :name, placeholder: "Name", class: "form-control w-full" %>
+    </div>
+
+    <div class="field amount w-full">
+      <%= form.number_field :amount, placeholder: "Amount", class: "form-control w-full" %>
+    </div>
+
+    <div class="field groups w-full">
+      <%= form.label :group_ids,
+                 "Select categories to add this transaction to. Press CTRL+click or click and drag to select multiple",
+                 class: "form-label" %>
+      <%= select_tag "entity[group_ids][]",
+      options_from_collection_for_select(@groups, :id, :name, selected: @group.id),
+      { multiple: true, class: "form-control w-full [&>*]:p-2", size: @groups.count } %>
+    </div>
+
+    <div class="actions w-full bg-[#3778c2] text-white p-2 text-center">
+      <%= form.submit class: "w-full hover:cursor-pointer" %>
+    </div>
+  <% end %>
+
+</div>
