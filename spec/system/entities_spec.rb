@@ -4,7 +4,7 @@ RSpec.describe 'Entities', type: :system do
   let(:user) { User.create(name: 'First User', email: 'test@user.com', password: 'password') }
   before do
     # comment the line below to run tests in browser
-    # driven_by(:rack_test)
+    driven_by(:rack_test)
 
     puts "\nCreating test data..."
 
@@ -48,6 +48,29 @@ RSpec.describe 'Entities', type: :system do
       expect(page).to have_content(entity.name)
       expect(page).to have_content(entity.created_at.strftime("%B%e, %Y%l:%M %p\n"))
     end
-    sleep(5)
+  end
+
+  it 'can create a new entity', js: true do
+    visit group_path(Group.first)
+    click_button 'Add Transaction'
+    fill_in 'entity_name', with: 'New Entity'
+    fill_in 'entity_amount', with: 69
+    click_button 'Create Entity'
+    expect(page).to have_content('New Entity')
+    expect(page).to have_content('69')
+  end
+
+  it 'can create a new entity with different groups', js: true do
+    visit group_path(Group.first)
+    click_button 'Add Transaction'
+    fill_in 'entity_name', with: 'Newer Entity'
+    fill_in 'entity_amount', with: 420
+    select Group.second.name, from: 'entity_group_ids_'
+    click_button 'Create Entity'
+    expect(page).to have_content('Newer Entity')
+    expect(page).to have_content('420')
+    visit group_path(Group.second)
+    expect(page).to have_content('Newer Entity')
+    expect(page).to have_content('420')
   end
 end
