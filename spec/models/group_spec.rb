@@ -2,8 +2,13 @@ require_relative '../rails_helper'
 
 RSpec.describe Group, type: :model do
   let(:user) { User.new(name: 'First User', email: 'test@example.com', password: 'password') }
-  subject { Group.new(name: 'First Group', icon: 'fake-img.png', author: user) }
-  before { subject.save }
+  subject { Group.new(name: 'First Group', author: user) }
+
+  before do
+    subject.icon.attach(io: File.open(Rails.root.join('spec', 'models', 'files', 'test.jpg')), filename: 'test.jpg',
+                        content_type: 'image/jpeg')
+    subject.save
+  end
 
   describe 'validations' do
     it 'is valid with valid attributes' do
