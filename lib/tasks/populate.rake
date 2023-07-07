@@ -22,7 +22,6 @@ namespace :db do
       name: 'First User',
       email: 'testuser@test.com',
       password: 'password',
-      confirmed_at: Time.now
     )
 
     5.times do
