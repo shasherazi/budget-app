@@ -1,10 +1,10 @@
 require_relative '../rails_helper'
 
-RSpec.describe 'Group Index', type: :system do
+RSpec.describe 'Entities', type: :system do
   let(:user) { User.create(name: 'First User', email: 'test@user.com', password: 'password') }
   before do
     # comment the line below to run tests in browser
-    driven_by(:rack_test)
+    # driven_by(:rack_test)
 
     puts "\nCreating test data..."
 
@@ -42,31 +42,12 @@ RSpec.describe 'Group Index', type: :system do
     User.destroy_all
   end
 
-  it 'displays all groups, their names, and icons', js: true do
-    visit groups_path
-    user.groups.each do |group|
-      expect(page).to have_content(group.name)
-      expect(page).to have_css("img[src*='#{group.icon.blob.filename}']")
+  it 'displays all entities and their names, and dates', js: true do
+    visit group_path(Group.first)
+    Group.first.entities.each do |entity|
+      expect(page).to have_content(entity.name)
+      expect(page).to have_content(entity.created_at.strftime("%B%e, %Y%l:%M %p\n"))
     end
-  end
-
-  it 'displays entities of a group when clicked', js: true do
-    visit groups_path
-    user.groups.each do |group|
-      click_link group.name
-      group.entities.each do |entity|
-        expect(page).to have_content(entity.name)
-        expect(page).to have_current_path(group_path(group))
-      end
-      visit groups_path
-    end
-  end
-
-  it 'can create a new group', js: true do
-    visit new_group_path
-    fill_in 'group_name', with: 'Newly created group'
-    attach_file('group_icon', Rails.root.join('spec', 'models', 'files', 'test.jpg'))
-    click_button 'Create Group'
-    expect(page).to have_content('Newly created group')
+    sleep(5)
   end
 end
