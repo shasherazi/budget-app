@@ -1,0 +1,13 @@
+<div class="group flex items-center relative w-full bg-white">
+  <div class="icon h-[120px] object-contain aspect-1 flex items-center p-2">
+    <%= image_tag group.icon %>
+  </div>
+  <div class="group-info">
+    <div class="group-name text-xl">
+      <%= link_to group.name, group_path(group) %>
+    </div>
+    <div class="group-amount absolute right-2 bottom-2">
+      <%= number_to_currency(group.entities.sum(:amount)) %>
+    </div>
+  </div>
+</div>

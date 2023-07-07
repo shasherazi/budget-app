@@ -1,0 +1,35 @@
+<div
+  class="groups-show flex flex-col items-center gap-2 bg-gray-300 min-h-screen"
+>
+  <div
+    class="
+      nav
+      flex
+      justify-center
+      items-center
+      bg-[#3778c2]
+      py-2
+      w-full
+      sticky
+      z-10
+      top-0
+    "
+  >
+    <h2 class="text-2xl text-gray-100"><%= @group.name %></h2>
+    <div class="actions absolute right-3 text-white text-sm">
+      <%= number_to_currency(@group.entities.sum(:amount)) %>
+    </div>
+    <div class="actions absolute left-3">
+      <a href="/" class="text-white cursor-pointer">Back</a>
+    </div>
+  </div>
+  <div class="px-2 w-full flex flex-col gap-2 mb-2">
+    <%= render partial: "transaction",
+    collection: @group.entities.order(created_at: :desc),
+    as: :entity %>
+  </div>
+  <%= button_to "Add Transaction",
+  new_group_entity_path(@group),
+  method: :get,
+  class: "bg-[#3778c2] text-white py-2 px-4 rounded mb-4 w-full" %>
+</div>
