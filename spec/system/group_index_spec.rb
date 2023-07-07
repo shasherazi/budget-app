@@ -61,4 +61,12 @@ RSpec.describe 'Group Index', type: :system do
       visit groups_path
     end
   end
+
+  it 'can create a new group', js: true do
+    visit new_group_path
+    fill_in 'group_name', with: 'Newly created group'
+    attach_file('group_icon', Rails.root.join('spec', 'models', 'files', 'test.jpg'))
+    click_button 'Create Group'
+    expect(page).to have_content('Newly created group')
+  end
 end
